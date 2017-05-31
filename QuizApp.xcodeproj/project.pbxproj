@@ -14,6 +14,8 @@
 		97093D461C913506001275BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97093D441C913506001275BC /* LaunchScreen.storyboard */; };
 		97093D531C932116001275BC /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 97093D521C932116001275BC /* GameSound.wav */; };
 		B135C8EB1EDE9BAC00BA2E45 /* QuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B135C8EA1EDE9BAC00BA2E45 /* QuestionProvider.swift */; };
+		B135C8EE1EDE9C0000BA2E45 /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = B135C8EC1EDE9C0000BA2E45 /* correct.wav */; };
+		B135C8EF1EDE9C0000BA2E45 /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = B135C8ED1EDE9C0000BA2E45 /* wrong.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		97093D471C913506001275BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97093D521C932116001275BC /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSound.wav; sourceTree = "<group>"; };
 		B135C8EA1EDE9BAC00BA2E45 /* QuestionProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionProvider.swift; sourceTree = "<group>"; };
+		B135C8EC1EDE9C0000BA2E45 /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct.wav; sourceTree = "<group>"; };
+		B135C8ED1EDE9C0000BA2E45 /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				97093D441C913506001275BC /* LaunchScreen.storyboard */,
 				97093D471C913506001275BC /* Info.plist */,
 				97093D521C932116001275BC /* GameSound.wav */,
+				B135C8EC1EDE9C0000BA2E45 /* correct.wav */,
+				B135C8ED1EDE9C0000BA2E45 /* wrong.wav */,
 				B135C8EA1EDE9BAC00BA2E45 /* QuestionProvider.swift */,
 			);
 			name = QuizApp;
@@ -134,6 +140,8 @@
 				97093D531C932116001275BC /* GameSound.wav in Resources */,
 				97093D461C913506001275BC /* LaunchScreen.storyboard in Resources */,
 				97093D431C913506001275BC /* Assets.xcassets in Resources */,
+				B135C8EE1EDE9C0000BA2E45 /* correct.wav in Resources */,
+				B135C8EF1EDE9C0000BA2E45 /* wrong.wav in Resources */,
 				97093D411C913506001275BC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
