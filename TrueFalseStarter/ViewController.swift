@@ -143,5 +143,16 @@ class ViewController: UIViewController {
     func playGameStartSound() {
         AudioServicesPlaySystemSound(gameSound)
     }
+    
+    func playWrongSound() {
+    AudioServicesPlaySystemSound(wrongSound)
+    
+    }
+    func playCorrectSound() {
+        AudioServicesPlaySystemSound(correctSound)
+        
+    }
+    
+    
 }
 
