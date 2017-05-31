@@ -37,9 +37,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadGameStartSound()
+        
+        loadWrongSound()
+        
+        playWrongSound()
+        //loadGameStartSound()
         // Start game
-        playGameStartSound()
+        //playGameStartSound()
         displayQuestion()
     }
 
