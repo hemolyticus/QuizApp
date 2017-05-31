@@ -126,6 +126,20 @@ class ViewController: UIViewController {
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSound)
     }
     
+    func loadCorrectSound()
+    {
+        let pathToSoundFile = Bundle.main.path(forResource: "correct", ofType: "wav")
+        let soundURL = URL(fileURLWithPath: pathToSoundFile!)
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &correctSound)
+    }
+    
+    func loadWrongSound()
+    {
+        let pathToSoundFile = Bundle.main.path(forResource: "wrong", ofType: "wav")
+        let soundURL = URL(fileURLWithPath: pathToSoundFile!)
+        AudioServicesCreateSystemSoundID(soundURL as CFURL, &wrongSound)
+    }
+
     func playGameStartSound() {
         AudioServicesPlaySystemSound(gameSound)
     }
