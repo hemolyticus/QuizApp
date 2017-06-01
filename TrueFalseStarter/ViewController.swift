@@ -123,20 +123,23 @@ class ViewController: UIViewController {
             self.nextRound()
         }
     }
-    
+
+//This function locates the game sound in the resource shipped with the app and initialises the URL with the given data which then allows for the creation of a system sound object, gameStartSound
     func loadGameStartSound() {
         let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")
         let soundURL = URL(fileURLWithPath: pathToSoundFile!)
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSound)
     }
-    
+
+//This function locates the correct sound in the resource shipped with the app and initialises the URL with the given data which then allows for the creation of a system sound object, correctSound
     func loadCorrectSound()
     {
         let pathToSoundFile = Bundle.main.path(forResource: "correct", ofType: "wav")
         let soundURL = URL(fileURLWithPath: pathToSoundFile!)
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &correctSound)
     }
-    
+
+//This function locates the wrong sound in the resource shipped with the app and initialises the URL with the given data which then allows for the creation of a system sound object, wrongSound
     func loadWrongSound()
     {
         let pathToSoundFile = Bundle.main.path(forResource: "wrong", ofType: "wav")
@@ -144,14 +147,18 @@ class ViewController: UIViewController {
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &wrongSound)
     }
 
+//This function plays before the game starts. This function might be deleted in future iterations of the project
     func playGameStartSound() {
         AudioServicesPlaySystemSound(gameSound)
     }
-    
+
+//This function plays the wrong sound if the user got the wrong answer
     func playWrongSound() {
     AudioServicesPlaySystemSound(wrongSound)
     
     }
+    
+//This function plays the corect sound if the user got the correct answer
     func playCorrectSound() {
         AudioServicesPlaySystemSound(correctSound)
         
