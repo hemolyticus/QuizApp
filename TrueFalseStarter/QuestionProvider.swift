@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GameKit
 
 struct Questions {
     var question: String?
@@ -30,3 +31,10 @@ let question5 = Questions(question: "Which nation produces the most oil?", optio
 let question6 = Questions(question: "Which country has most recently won consecutive World Cups in Soccer?", option1: "Italy", option2: "Brazil", option3: "Argentina", option4: "Spain", correctAnswer: "Brazil")
 
 let questionArray: [Questions] = [question1,question2, question3, question4, question5, question6]
+
+func generateRandomQuestion() -> Questions
+{
+    let indexOfQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionArray.count)
+    
+    return questionArray[indexOfQuestion]
+}
