@@ -124,6 +124,25 @@ class ViewController: UIViewController {
         }
     }
 
+/*******
+ Score Calculation Functions
+ *******/
+    
+    func correctAnswers()  {
+        var correctAnswers = totalQuestions - wrongAnswers
+    }
+    
+    func wrongAnswers()
+    {
+        var wrongAnswers = totalQuestions - correctAnswers
+    }
+    
+
+
+/*******
+ Sound Functions
+ ******/
+
 //This function locates the game sound in the resource shipped with the app and initialises the URL with the given data which then allows for the creation of a system sound object, gameStartSound
     func loadGameStartSound() {
         let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")

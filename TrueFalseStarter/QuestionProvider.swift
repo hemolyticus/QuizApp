@@ -28,3 +28,5 @@ let question4 = Questions(question: "The Titanic departed from the United Kingdo
 let question5 = Questions(question: "Which nation produces the most oil?", option1: "Iran", option2: "Iraq", option3: "Brazil", option4: "Canada", correctAnswer: "Canada")
 
 let question6 = Questions(question: "Which country has most recently won consecutive World Cups in Soccer?", option1: "Italy", option2: "Brazil", option3: "Argentina", option4: "Spain", correctAnswer: "Brazil")
+
+let questionArray: [Questions] = [question1,question2, question3, question4, question5, question6]
