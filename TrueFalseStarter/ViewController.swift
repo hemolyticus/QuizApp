@@ -12,7 +12,7 @@ import AudioToolbox
 
 class ViewController: UIViewController {
     
-    let questionsPerRound = 4
+    let questionsPerRound = 5
     var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion: Int = 0
@@ -22,19 +22,19 @@ class ViewController: UIViewController {
 
     var gameSound: SystemSoundID = 0
     
-    let trivia: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
-        ["Question": "Blue whales are technically whales", "Answer": "True"],
-        ["Question": "Camels are cannibalistic", "Answer": "False"],
-        ["Question": "All ducks are birds", "Answer": "True"]
-    ]
+    let questionToDisplay = generateRandomQuestion()
     
-    @IBOutlet weak var questionField: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
-    @IBOutlet weak var playAgainButton: UIButton!
     
+    @IBOutlet weak var questionLabel: UILabel!
+   
+    @IBOutlet weak var option1Button: UIButton!
+    
+    @IBOutlet weak var option2Button: UIButton!
 
+    @IBOutlet weak var option3Button: UIButton!
+   
+    
+    @IBOutlet weak var option4Button: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,9 +53,9 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-        let questionDictionary = trivia[indexOfSelectedQuestion]
-        questionField.text = questionDictionary["Question"]
+        
+        questionField.text = questionToDisplay.question
+        
         playAgainButton.isHidden = true
     }
     
