@@ -37,15 +37,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var option4Button: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        loadWrongSound()
-        
-        playWrongSound()
-        //loadGameStartSound()
-        // Start game
-        //playGameStartSound()
+        loadAllSounds()
+        playGameStartSound()
         displayQuestion()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,32 +55,50 @@ class ViewController: UIViewController {
         option2Button.setTitle(questionToDisplay.option2, for: .normal)
         option3Button.setTitle(questionToDisplay.option3, for: .normal)
         option4Button.setTitle(questionToDisplay.option4, for: .normal)
-
-
-        
+       
     }
+    
+    
     
     func displayScore() {
         
         
     }
     
-   // @IBAction func checkAnswer(_ sender: UIButton) {
-        // Increment the questions asked counter
-//        questionsAsked += 1
-//        
-//        let selectedQuestionDict = trivia[indexOfSelectedQuestion]
-//        let correctAnswer = selectedQuestionDict["Answer"]
-//        
-//        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
-//            correctQuestions += 1
-//            questionField.text = "Correct!"
-//        } else {
-//            questionField.text = "Sorry, wrong answer!"
-//        }
-//        
-//        loadNextRoundWithDelay(seconds: 2)
-//}
+    
+    @IBAction func checkAnswer(_ sender: UIButton) {
+       
+        let correctAnswer =
+         questionToDisplay.correctAnswer
+        
+        if (sender.titleLabel!.text == correctAnswer) {
+            correctQuestions += 1
+            questionLabel.text = "Correct!"
+            playCorrectSound()
+            disableOptionButtons()
+        }
+        else
+        {
+            questionLabel.text = "Wrong"
+            playWrongSound()
+            disableOptionButtons()
+        }
+    }
+    
+    func disableOptionButtons()
+    {
+        option1Button.isEnabled = false
+        option2Button.isEnabled = false
+        option3Button.isEnabled = false
+        option4Button.isEnabled = false
+
+    }
+    
+       // loadNextRoundWithDelay(seconds: 2)
+
+    
+    
+    
     //func nextRound() {
       //  if questionsAsked == questionsPerRound {
             // Game is over
@@ -119,15 +132,7 @@ class ViewController: UIViewController {
  Score Calculation Functions
  *******/
     
-    func correctAnswers()  {
-      //  var correctAnswers = totalQuestions - wrongAnswers
-    }
-    
-    func wrongAnswers()
-    {
-      //  var wrongAnswers = totalQuestions - correctAnswers
-    }
-    
+        
 
 
 /*******
@@ -156,6 +161,13 @@ class ViewController: UIViewController {
         let soundURL = URL(fileURLWithPath: pathToSoundFile!)
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &wrongSound)
     }
+        
+    func loadAllSounds()
+    {
+        loadGameStartSound()
+        loadCorrectSound()
+        loadWrongSound()
+        }
 
 //This function plays before the game starts. This function might be deleted in future iterations of the project
     func playGameStartSound() {
@@ -173,6 +185,7 @@ class ViewController: UIViewController {
         AudioServicesPlaySystemSound(correctSound)
         
     }
+        
     
     
 }
