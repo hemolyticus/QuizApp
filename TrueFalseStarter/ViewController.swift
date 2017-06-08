@@ -22,7 +22,7 @@ class ViewController: UIViewController {
 
     var gameSound: SystemSoundID = 0
     
-    let questionToDisplay = generateRandomQuestion()
+    var questionToDisplay = generateRandomQuestion()
     
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -49,8 +49,10 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionArray.count)
+        let questionToDisplay = questionArray[indexOfSelectedQuestion]
         questionLabel.text = questionToDisplay.question
+        enableOptionButtons()
         option1Button.setTitle(questionToDisplay.option1, for: .normal)
         option2Button.setTitle(questionToDisplay.option2, for: .normal)
         option3Button.setTitle(questionToDisplay.option3, for: .normal)
@@ -69,7 +71,7 @@ class ViewController: UIViewController {
     @IBAction func checkAnswer(_ sender: UIButton) {
        
         let correctAnswer =
-         questionToDisplay.correctAnswer
+         questionToDisplay.correctAnswer.to
         
         if (sender.titleLabel!.text == correctAnswer) {
             correctQuestions += 1
@@ -83,6 +85,9 @@ class ViewController: UIViewController {
             playWrongSound()
             disableOptionButtons()
         }
+        
+        loadNextRoundWithDelay(seconds: 2)
+        
     }
     
     func disableOptionButtons()
@@ -93,6 +98,40 @@ class ViewController: UIViewController {
         option4Button.isEnabled = false
 
     }
+    
+    func enableOptionButtons()
+    {
+        option1Button.isEnabled = true
+        option2Button.isEnabled = true
+        option3Button.isEnabled = true
+        option4Button.isEnabled = true
+        
+    }
+    
+    func nextRound() {
+        if questionsAsked == questionsPerRound {
+            // Game is over
+            displayScore()
+        } else {
+            // Continue game
+            displayQuestion()
+        }
+    }
+    
+    func loadNextRoundWithDelay(seconds: Int) {
+        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
+        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
+        // Calculates a time value to execute the method given current time and delay
+        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
+        
+        // Executes the nextRound method at the dispatch time on the main queue
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            self.nextRound()
+        }
+    }
+
+
+
     
        // loadNextRoundWithDelay(seconds: 2)
 
