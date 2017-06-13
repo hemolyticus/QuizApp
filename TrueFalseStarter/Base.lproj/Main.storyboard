@@ -60,6 +60,19 @@
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bVM-45-qwb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFn-au-Wfa">
+                                <rect key="frame" x="301" y="586" width="29" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.047058823530000002" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="playAgain"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="pla" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Md-8h-72U"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AS4-HX-g9f">
                                 <rect key="frame" x="37" y="278" width="300" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -80,11 +93,16 @@
                         <outlet property="option2Button" destination="AS4-HX-g9f" id="89b-Fe-Zbi"/>
                         <outlet property="option3Button" destination="Lan-hp-HH4" id="svU-vq-iN5"/>
                         <outlet property="option4Button" destination="qb5-eV-DdN" id="b4W-QM-VRL"/>
+                        <outlet property="playAgainButton" destination="LFn-au-Wfa" id="EEX-Hs-8aE"/>
                         <outlet property="questionLabel" destination="I3V-ih-1Ky" id="hqi-hx-ucs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-231.19999999999999" y="325.18740629685158"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="playAgain" width="29" height="29"/>
+    </resources>
 </document>

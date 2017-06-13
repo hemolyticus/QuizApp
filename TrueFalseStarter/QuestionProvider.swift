@@ -32,3 +32,21 @@ var question6 = Questions(question: "Which country has most recently won consecu
 
 var questionArray: [Questions] = [question1,question2, question3, question4, question5, question6]
 
+func generateRandomQuestion() -> Questions
+{
+    let indexQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionArray.count)
+    let questionToDisplay = questionArray[indexQuestion]
+    removeQuestion(at: indexQuestion)
+    return questionToDisplay
+}
+func removeQuestion(at index: Int)
+{
+    questionArray.remove(at: index)
+}
+
+func regenerateQuestionArray()
+{
+    questionArray = [question1,question2, question3, question4, question5, question6]
+}
+
+    

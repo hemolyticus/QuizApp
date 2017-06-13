@@ -17,12 +17,14 @@ class ViewController: UIViewController {
     var correctQuestions = 0
     var indexOfSelectedQuestion: Int = 0
     
+    
+    var correctAnswer: String = ""
     var wrongSound: SystemSoundID = 0
     var correctSound: SystemSoundID = 0
 
     var gameSound: SystemSoundID = 0
     
-    var questionToDisplay = generateRandomQuestion()
+    
     
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -35,10 +37,14 @@ class ViewController: UIViewController {
    
     
     @IBOutlet weak var option4Button: UIButton!
+    
+    
+    @IBOutlet weak var playAgainButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadAllSounds()
         playGameStartSound()
+       
         displayQuestion()
         
     }
@@ -48,9 +54,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func playAgain(_ sender: Any) {
+        questionsAsked = 0
+        correctQuestions = 0
+        indexOfSelectedQuestion = 0
+        regenerateQuestionArray()
+        print(questionArray)
+        displayQuestion()
+        showOptionButtonHidePlayAgainButton()
+    }
+    
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionArray.count)
-        let questionToDisplay = questionArray[indexOfSelectedQuestion]
+        questionsAsked += 1
+        let questionToDisplay = generateRandomQuestion()
+        
+        correctAnswer =
+            questionToDisplay.correctAnswer
         questionLabel.text = questionToDisplay.question
         enableOptionButtons()
         option1Button.setTitle(questionToDisplay.option1, for: .normal)
@@ -63,15 +82,14 @@ class ViewController: UIViewController {
     
     
     func displayScore() {
-        
+        hideOptionButtonShowPlayAgainButton()
+        questionLabel.text = "You got \(correctQuestions) out of \(questionsPerRound)!"
         
     }
     
     
     @IBAction func checkAnswer(_ sender: UIButton) {
-       
-        let correctAnswer =
-         questionToDisplay.correctAnswer.to
+     
         
         if (sender.titleLabel!.text == correctAnswer) {
             correctQuestions += 1
@@ -87,7 +105,8 @@ class ViewController: UIViewController {
         }
         
         loadNextRoundWithDelay(seconds: 2)
-        
+        print(correctQuestions)
+        print(questionsAsked)
     }
     
     func disableOptionButtons()
@@ -107,6 +126,25 @@ class ViewController: UIViewController {
         option4Button.isEnabled = true
         
     }
+    
+    func hideOptionButtonShowPlayAgainButton()
+    {
+        option1Button.isHidden = true
+        option2Button.isHidden = true
+        option3Button.isHidden = true
+        option4Button.isHidden = true
+        playAgainButton.isHidden = false
+    }
+    func showOptionButtonHidePlayAgainButton()
+    {
+        option1Button.isHidden = false
+        option2Button.isHidden = false
+        option3Button.isHidden = false
+        option4Button.isHidden = false
+        playAgainButton.isHidden = true
+    }
+    
+    
     
     func nextRound() {
         if questionsAsked == questionsPerRound {
