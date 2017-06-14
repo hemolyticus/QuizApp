@@ -21,45 +21,36 @@ class ViewController: UIViewController {
     var correctAnswer: String = ""
     var wrongSound: SystemSoundID = 0
     var correctSound: SystemSoundID = 0
-
     var gameSound: SystemSoundID = 0
-    
-    
-    
-    
     @IBOutlet weak var questionLabel: UILabel!
-   
     @IBOutlet weak var option1Button: UIButton!
-    
     @IBOutlet weak var option2Button: UIButton!
-
     @IBOutlet weak var option3Button: UIButton!
-   
-    
     @IBOutlet weak var option4Button: UIButton!
-    
-    
     @IBOutlet weak var playAgainButton: UIButton!
+    
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         loadAllSounds()
         playGameStartSound()
-       
         displayQuestion()
         
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func playAgain(_ sender: Any) {
+        
         questionsAsked = 0
         correctQuestions = 0
         indexOfSelectedQuestion = 0
         regenerateQuestionArray()
-        print(questionArray)
         displayQuestion()
         showOptionButtonHidePlayAgainButton()
     }
@@ -67,7 +58,6 @@ class ViewController: UIViewController {
     func displayQuestion() {
         questionsAsked += 1
         let questionToDisplay = generateRandomQuestion()
-        
         correctAnswer =
             questionToDisplay.correctAnswer
         questionLabel.text = questionToDisplay.question
@@ -83,14 +73,13 @@ class ViewController: UIViewController {
     
     
     func displayScore() {
+        
         hideOptionButtonShowPlayAgainButton()
-        questionLabel.text = "You got \(correctQuestions) out of \(questionsPerRound)!"
+        questionLabel.text = "You got \(correctQuestions) correct answers out of \(questionsPerRound) questions!"
         
     }
     
-    
     @IBAction func checkAnswer(_ sender: UIButton) {
-     
         
         if (sender.titleLabel!.text == correctAnswer) {
             correctQuestions += 1
@@ -106,8 +95,7 @@ class ViewController: UIViewController {
         }
         
         loadNextRoundWithDelay(seconds: 2)
-        print(correctQuestions)
-        print(questionsAsked)
+        
     }
     
     func disableOptionButtons()
@@ -136,6 +124,7 @@ class ViewController: UIViewController {
         option4Button.isHidden = true
         playAgainButton.isHidden = false
     }
+    
     func showOptionButtonHidePlayAgainButton()
     {
         option1Button.isHidden = false
@@ -144,8 +133,6 @@ class ViewController: UIViewController {
         option4Button.isHidden = false
         playAgainButton.isHidden = true
     }
-    
-    
     
     func nextRound() {
         if questionsAsked == questionsPerRound {
@@ -168,51 +155,7 @@ class ViewController: UIViewController {
             self.nextRound()
         }
     }
-
-
-
-    
-       // loadNextRoundWithDelay(seconds: 2)
-
-    
-    
-    
-    //func nextRound() {
-      //  if questionsAsked == questionsPerRound {
-            // Game is over
-        //    displayScore()
-        //} else {
-            // Continue game
-          //  displayQuestion()
-        //}
-    //}
-    
-   // @IBAction func playAgain() {
-     //      }
-    
-
-    
-    // MARK: Helper Methods
-    
-//    func loadNextRoundWithDelay(seconds: Int) {
-//        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
-//        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
-//        // Calculates a time value to execute the method given current time and delay
-//        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
-//        
-//        // Executes the nextRound method at the dispatch time on the main queue
-//        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-//            self.nextRound()
-//        }
-//    }
-
-/*******
- Score Calculation Functions
- *******/
-    
-        
-
-
+ 
 /*******
  Sound Functions
  ******/

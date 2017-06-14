@@ -22,7 +22,7 @@ var question1 = Questions(question: "This was the only US President to serve mor
 
 var question2 = Questions(question: "Which of the following countries has the most residents?", option1: "Nigeria", option2: "Russia", option3: "Iran", option4: "Vietnam", correctAnswer: "Nigeria")
 
-var question3 = Questions(question: "1918", option1: "1919", option2: "1919", option3: "1945", option4: "1954", correctAnswer: "1945")
+var question3 = Questions(question: "In what year was the United Nations founded?", option1: "1919", option2: "1919", option3: "1945", option4: "1954", correctAnswer: "1945")
 
 var question4 = Questions(question: "The Titanic departed from the United Kingdom, where was it supposed to arrive?", option1: "Paris", option2: "Washington D.C.", option3: "New York City", option4: "Boston", correctAnswer: "New York City")
 
@@ -30,7 +30,16 @@ var question5 = Questions(question: "Which nation produces the most oil?", optio
 
 var question6 = Questions(question: "Which country has most recently won consecutive World Cups in Soccer?", option1: "Italy", option2: "Brazil", option3: "Argentina", option4: "Spain", correctAnswer: "Brazil")
 
-var questionArray: [Questions] = [question1,question2, question3, question4, question5, question6]
+
+var question7 = Questions(question: "Which of the following rivers is longest?", option1: "Yangtze", option2: "Mississippi", option3: "Congo", option4: "Mekong", correctAnswer: "Mississippi")
+var question8 = Questions(question: "Which city is the oldest?", option1: "Mexico City", option2: "Cape Town", option3: "Sydney", option4: "Spain", correctAnswer: "Mexico City")
+
+var question9 = Questions(question: "Which country was the first to allow women to vote in national elections?", option1: "Poland", option2: "United States", option3: "Sweden", option4: "Senegal", correctAnswer: "Poland")
+
+var question10 = Questions(question: "Which of these countries won the most medals in the 2012 Summer Games?", option1: "France", option2: "United States", option3: "Japan", option4: "Great Britain", correctAnswer: "Great Britain")
+
+
+var questionArray: [Questions] = [question1,question2, question3, question4, question5, question6, question7, question8, question9, question10]
 
 func generateRandomQuestion() -> Questions
 {
@@ -46,7 +55,7 @@ func removeQuestion(at index: Int)
 
 func regenerateQuestionArray()
 {
-    questionArray = [question1,question2, question3, question4, question5, question6]
+    questionArray = [question1,question2, question3, question4, question5, question6, question7, question8, question9, question10]
 }
 
     
