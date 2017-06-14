@@ -8,7 +8,7 @@
 
 import Foundation
 import GameKit
-
+// Structure of the questions
 struct Questions {
     var question: String?
     var option1: String?
@@ -18,6 +18,7 @@ struct Questions {
     var correctAnswer: String
 }
 
+//Variables that will initialise and declare various questions
 var question1 = Questions(question: "This was the only US President to serve more than two consecutive terms", option1: "George Washington", option2: "Franklin D. Roosevelt", option3: "Woodrow Wilson", option4: "Andrew Jackson", correctAnswer: "Franklin D. Roosevelt")
 
 var question2 = Questions(question: "Which of the following countries has the most residents?", option1: "Nigeria", option2: "Russia", option3: "Iran", option4: "Vietnam", correctAnswer: "Nigeria")
@@ -38,9 +39,11 @@ var question9 = Questions(question: "Which country was the first to allow women 
 
 var question10 = Questions(question: "Which of these countries won the most medals in the 2012 Summer Games?", option1: "France", option2: "United States", option3: "Japan", option4: "Great Britain", correctAnswer: "Great Britain")
 
-
+//An array variable that will hold all the questions
 var questionArray: [Questions] = [question1,question2, question3, question4, question5, question6, question7, question8, question9, question10]
 
+
+//A function that will generate a random question using GameKit and remove that question from the array by calling removeQuestion() to avoid repeatition
 func generateRandomQuestion() -> Questions
 {
     let indexQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: questionArray.count)
@@ -48,11 +51,15 @@ func generateRandomQuestion() -> Questions
     removeQuestion(at: indexQuestion)
     return questionToDisplay
 }
+
+//This functon removes the index of the question from the array
 func removeQuestion(at index: Int)
 {
     questionArray.remove(at: index)
 }
 
+
+//This function replinshes the contents of the questionArray once the playAgain button is pressed
 func regenerateQuestionArray()
 {
     questionArray = [question1,question2, question3, question4, question5, question6, question7, question8, question9, question10]

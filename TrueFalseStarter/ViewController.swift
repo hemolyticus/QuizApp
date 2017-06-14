@@ -11,13 +11,11 @@ import GameKit
 import AudioToolbox
 
 class ViewController: UIViewController {
-    
+    //Variables
     let questionsPerRound = 5
     var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion: Int = 0
-    
-    
     var correctAnswer: String = ""
     var wrongSound: SystemSoundID = 0
     var correctSound: SystemSoundID = 0
@@ -29,9 +27,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var option4Button: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     
-    
+// This function is called after the View Controller has loaded its view into the memory
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         loadAllSounds()
         playGameStartSound()
@@ -44,7 +41,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+ // This playAgainfunction is called once the player decides to play the game again. It resets the values of the variables: questionsAsked, correctQuestions, and indexOfSelectedQuestions. It also call the regenerateQuestionArray(), displayQuestion(), and showOptionButtonHidePlayAgainButton()
     @IBAction func playAgain(_ sender: Any) {
         
         questionsAsked = 0
@@ -55,6 +52,7 @@ class ViewController: UIViewController {
         showOptionButtonHidePlayAgainButton()
     }
     
+// The display Question()  calls the generateRandomQuestion() which returns a question and assigns it to variable called questionToDisplay. It also assigns the correct answer to a global variable that is used to check answers. Each to the property of the questionToDisplay is assigned to the appropriate UI object. This also increments the numbers of questions asked and hides the playAgainButton
     func displayQuestion() {
         questionsAsked += 1
         let questionToDisplay = generateRandomQuestion()
@@ -71,14 +69,15 @@ class ViewController: UIViewController {
     }
     
     
-    
+//This function displays the score of the players once the game is finished
     func displayScore() {
         
         hideOptionButtonShowPlayAgainButton()
         questionLabel.text = "You got \(correctQuestions) correct answers out of \(questionsPerRound) questions!"
         
     }
-    
+
+//This function checks the answer selected by the user among the options using the correctAnswer variables and adds 1 to the correctQuestions variable if the answer is correct and replaces  the questionTextField temporarily with correct or wrong! It also calls the loadNextRound() after 2 seconds
     @IBAction func checkAnswer(_ sender: UIButton) {
         
         if (sender.titleLabel!.text == correctAnswer) {
@@ -97,7 +96,7 @@ class ViewController: UIViewController {
         loadNextRoundWithDelay(seconds: 2)
         
     }
-    
+//This function disables the option buttons which is called within  the checkAnswer()
     func disableOptionButtons()
     {
         option1Button.isEnabled = false
@@ -106,7 +105,8 @@ class ViewController: UIViewController {
         option4Button.isEnabled = false
 
     }
-    
+
+//This function enables the option buttons. It is called within the displayQuestion()
     func enableOptionButtons()
     {
         option1Button.isEnabled = true
@@ -115,7 +115,8 @@ class ViewController: UIViewController {
         option4Button.isEnabled = true
         
     }
-    
+
+//This function hides the option buttons and displays the playAgain button. This function is called once the game is finished and the score is displayed
     func hideOptionButtonShowPlayAgainButton()
     {
         option1Button.isHidden = true
@@ -124,7 +125,8 @@ class ViewController: UIViewController {
         option4Button.isHidden = true
         playAgainButton.isHidden = false
     }
-    
+
+//This function shows the option buttons and hides the playAgain button while the game is ongoing
     func showOptionButtonHidePlayAgainButton()
     {
         option1Button.isHidden = false
@@ -133,7 +135,8 @@ class ViewController: UIViewController {
         option4Button.isHidden = false
         playAgainButton.isHidden = true
     }
-    
+  
+//This function determines whether the player has answer the maximum number of questions per round otherwise it would continue displaying question
     func nextRound() {
         if questionsAsked == questionsPerRound {
             // Game is over
