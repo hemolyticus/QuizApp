@@ -76,6 +76,7 @@ class ViewController: UIViewController {
         option2Button.setTitle(questionToDisplay.option2, for: .normal)
         option3Button.setTitle(questionToDisplay.option3, for: .normal)
         option4Button.setTitle(questionToDisplay.option4, for: .normal)
+        playAgainButton.isHidden = true
        
     }
     
